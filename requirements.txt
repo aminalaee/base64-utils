@@ -3,3 +3,4 @@ mkdocs-material==9.5.34
 mypy==1.19.0
 pytest==9.0.1
 ruff==0.14.7
+richbench==1.0.3

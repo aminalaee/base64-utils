@@ -1,0 +1,39 @@
+site_name: base64-utils
+site_description: Python base64 powered by Rust
+site_url: https://aminalaee.github.io/base64-utils
+
+theme:
+  name: "material"
+  palette:
+    primary: white
+  features:
+    - content.code.copy
+
+repo_name: aminalaee/base64-utils
+repo_url: https://github.com/aminalaee/base64-utils
+edit_uri: ""
+
+nav:
+  - Introduction: "index.md"
+
+markdown_extensions:
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - tables
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.tabbed
+  - pymdownx.superfences
+
+watch:
+  - python/
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/aminalaee
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/amin-alaee

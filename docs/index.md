@@ -1,10 +1,17 @@
 # Python base64 utils
 
+
 <div align="center">
 
-[![Package version](https://badge.fury.io/py/base64-utils.svg)](https://pypi.org/project/base64-utils/)
-[![Supported Python versions](https://img.shields.io/pypi/pyversions/base64-utils.svg?color=%2334D058)](https://pypi.org/project/base64-utils)
-[![CodSpeed](https://img.shields.io/endpoint?url=https://codspeed.io/badge.json)](https://codspeed.io/aminalaee/base64-utils?utm_source=badge)
+<a href="https://pypi.org/project/base64-utils/" target="_blank">>
+    <img src="https://badge.fury.io/py/base64-utils.svg" alt="Package version">
+</a>
+<a href="https://pypi.org/project/base64-utils" target="_blank">
+    <img src="https://img.shields.io/pypi/pyversions/base64-utils.svg?color=%2334D058" alt="Supported Python versions">
+</a>
+<a href="https://codspeed.io/aminalaee/base64-utils?utm_source=badge" target="_blank">
+    <img src="https://img.shields.io/endpoint?url=https://codspeed.io/badge.json" alt="Codspeed">
+</a>
 
 </div>
 

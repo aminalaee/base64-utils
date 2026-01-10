@@ -1,4 +1,4 @@
-use base64_simd::{Out, STANDARD};
+use base64_simd::{Out, STANDARD, URL_SAFE};
 use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
 use pyo3::types::PyBytes;
@@ -37,9 +37,31 @@ pub fn b64encode(py: Python<'_>, s: &[u8], altchars: Option<&[u8]>) -> PyResult<
     Ok(output.into())
 }
 
+#[pyfunction]
+pub fn standard_b64encode(py: Python<'_>, s: &[u8]) -> PyResult<Py<PyBytes>> {
+    let output_len = STANDARD.encoded_length(s.len());
+    let output = PyBytes::new_with(py, output_len, |buf| {
+        let _ = STANDARD.encode(s, Out::from_slice(buf));
+        Ok(())
+    })?;
+    Ok(output.into())
+}
+
+#[pyfunction]
+pub fn urlsafe_b64encode(py: Python<'_>, s: &[u8]) -> PyResult<Py<PyBytes>> {
+    let output_len = URL_SAFE.encoded_length(s.len());
+    let output = PyBytes::new_with(py, output_len, |buf| {
+        let _ = URL_SAFE.encode(s, Out::from_slice(buf));
+        Ok(())
+    })?;
+    Ok(output.into())
+}
+
 #[pymodule]
 fn _base64_utils(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add("__version__", env!("CARGO_PKG_VERSION"))?;
     m.add_function(wrap_pyfunction!(b64encode, m)?)?;
+    m.add_function(wrap_pyfunction!(standard_b64encode, m)?)?;
+    m.add_function(wrap_pyfunction!(urlsafe_b64encode, m)?)?;
     Ok(())
 }

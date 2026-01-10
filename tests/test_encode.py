@@ -1,6 +1,7 @@
 import base64
 
 import base64_utils
+import pytest
 
 
 def test_b64encode() -> None:
@@ -19,3 +20,9 @@ def test_b64encode_with_altchars() -> None:
 
     assert isinstance(encoded, bytes)
     assert encoded == expected
+
+
+def test_b64encode_with_invalid_altchars() -> None:
+    with pytest.raises(ValueError) as excinfo:
+        base64_utils.b64encode(b"test", b"-")
+    assert str(excinfo.value) == "altchars must be a bytes-like object of length 2"

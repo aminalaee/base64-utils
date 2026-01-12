@@ -1,10 +1,7 @@
-use base64_simd::{Out, STANDARD, URL_SAFE};
+use base64_simd::{Out, STANDARD, URL_SAFE, forgiving_decode_inplace};
 use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
 use pyo3::types::PyBytes;
-
-const STANDARD_CHARSET: &[u8] =
-    b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 #[derive(FromPyObject)]
 pub enum StringOrBytes {
@@ -85,23 +82,26 @@ pub fn b64decode(
     }
 
     if validate {
-        for &b in &input {
-            if !STANDARD_CHARSET.contains(&b) {
-                return Err(PyValueError::new_err("Only base64 data is allowed"));
-            }
-        }
-    } else {
-        input.retain(|&b| STANDARD_CHARSET.contains(&b));
-    }
+        STANDARD
+            .check(&input)
+            .map_err(|_| PyValueError::new_err("Invalid base64-encoded string"))?;
 
-    let output_len = STANDARD
-        .decoded_length(&input)
-        .map_err(|_| PyValueError::new_err("Invalid base64-encoded string"))?;
-    let output: Bound<'_, PyBytes> = PyBytes::new_with(py, output_len, |buf| {
-        let _ = STANDARD.decode(&input, Out::from_slice(buf));
-        Ok(())
-    })?;
-    Ok(output.into())
+        let output_len = STANDARD
+            .decoded_length(&input)
+            .map_err(|_| PyValueError::new_err("Invalid base64-encoded string"))?;
+
+        let output: Bound<'_, PyBytes> = PyBytes::new_with(py, output_len, |buf| {
+            STANDARD
+                .decode(&input, Out::from_slice(buf))
+                .map_err(|_| PyValueError::new_err("Invalid base64-encoded string"))?;
+            Ok(())
+        })?;
+        Ok(output.into())
+    } else {
+        let output = forgiving_decode_inplace(&mut input)
+            .map_err(|_| PyValueError::new_err("Invalid base64-encoded string"))?;
+        Ok(PyBytes::new(py, output).into())
+    }
 }
 
 #[pyfunction]

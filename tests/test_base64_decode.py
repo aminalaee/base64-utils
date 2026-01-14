@@ -54,3 +54,23 @@ def test_b64decode_invalid_data() -> None:
     data = b"invalid_base64!!"
     with pytest.raises(ValueError):
         base64_utils.b64decode(data)
+
+
+def test_standard_b64decode() -> None:
+    data = base64.standard_b64encode(b"some data")
+
+    decoded = base64_utils.standard_b64decode(data)
+    expected = base64.standard_b64decode(data)
+
+    assert isinstance(decoded, bytes)
+    assert expected == decoded
+
+
+def test_urlsafe_b64decode() -> None:
+    data = base64.urlsafe_b64encode(b"some data")
+
+    decoded = base64_utils.urlsafe_b64decode(data)
+    expected = base64.urlsafe_b64decode(data)
+
+    assert isinstance(decoded, bytes)
+    assert expected == decoded

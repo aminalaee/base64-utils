@@ -1,9 +1,8 @@
-# Python base64 utils
-
+# Python base64-utils
 
 <div align="center">
 
-<a href="https://pypi.org/project/base64-utils/" target="_blank">>
+<a href="https://pypi.org/project/base64-utils/" target="_blank">
     <img src="https://badge.fury.io/py/base64-utils.svg" alt="Package version">
 </a>
 <a href="https://pypi.org/project/base64-utils" target="_blank">

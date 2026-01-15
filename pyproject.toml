@@ -4,6 +4,9 @@ build-backend = "maturin"
 
 [project]
 name = "base64_utils"
+readme = "README.md"
+description = "Fast, drop-in replacement for Python's base64 module, powered by Rust."
+authors = [{ name = "Amin Alaee", email = "mohammadamin.alaee@gmail.com" }]
 requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python",

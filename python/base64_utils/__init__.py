@@ -1,4 +1,5 @@
 from ._base64_utils import (
+    __version__,
     b64decode,
     b64encode,
     standard_b64decode,
@@ -8,6 +9,7 @@ from ._base64_utils import (
 )
 
 __all__ = [
+    "__version__",
     "b64decode",
     "b64encode",
     "standard_b64decode",

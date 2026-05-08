@@ -74,3 +74,26 @@ def test_urlsafe_b64decode() -> None:
 
     assert isinstance(decoded, bytes)
     assert expected == decoded
+
+
+def test_decodebytes() -> None:
+    data = base64.encodebytes(b"Hello, World!")
+
+    decoded = base64_utils.decodebytes(data)
+    expected = base64.decodebytes(data)
+
+    assert isinstance(decoded, bytes)
+    assert expected == decoded
+
+
+def test_decodebytes_multiline() -> None:
+    data = base64.encodebytes(b"A" * 100)
+
+    decoded = base64_utils.decodebytes(data)
+    expected = base64.decodebytes(data)
+
+    assert expected == decoded
+
+
+def test_decodebytes_empty() -> None:
+    assert base64_utils.decodebytes(b"") == base64.decodebytes(b"")

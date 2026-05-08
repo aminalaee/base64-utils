@@ -44,3 +44,26 @@ def test_urlsafe_b64encode() -> None:
 
     assert isinstance(encoded, bytes)
     assert expected == encoded
+
+
+def test_encodebytes() -> None:
+    data = b"Hello, World!"
+    encoded = base64_utils.encodebytes(data)
+    expected = base64.encodebytes(data)
+
+    assert isinstance(encoded, bytes)
+    assert expected == encoded
+
+
+def test_encodebytes_multiline() -> None:
+    data = b"A" * 100
+    encoded = base64_utils.encodebytes(data)
+    expected = base64.encodebytes(data)
+
+    assert expected == encoded
+    lines = encoded.split(b"\n")
+    assert all(len(line) <= 76 for line in lines)
+
+
+def test_encodebytes_empty() -> None:
+    assert base64_utils.encodebytes(b"") == base64.encodebytes(b"")

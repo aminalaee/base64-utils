@@ -95,3 +95,13 @@ pub fn urlsafe_b64decode(py: Python<'_>, s: StringOrBytes) -> PyResult<Py<PyByte
     })?;
     Ok(output.into())
 }
+
+#[pyfunction]
+pub fn decodebytes(py: Python<'_>, s: StringOrBytes) -> PyResult<Py<PyBytes>> {
+    let mut input: Vec<u8> = s.into_bytes();
+    input.retain(|b| !b.is_ascii_whitespace());
+
+    let output = forgiving_decode_inplace(&mut input)
+        .map_err(|_| PyValueError::new_err("Invalid base64-encoded string"))?;
+    Ok(PyBytes::new(py, output).into())
+}

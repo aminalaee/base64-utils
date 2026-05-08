@@ -12,5 +12,7 @@ fn _base64_utils(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(encoder::b64encode, m)?)?;
     m.add_function(wrap_pyfunction!(encoder::standard_b64encode, m)?)?;
     m.add_function(wrap_pyfunction!(encoder::urlsafe_b64encode, m)?)?;
+    m.add_function(wrap_pyfunction!(encoder::encodebytes, m)?)?;
+    m.add_function(wrap_pyfunction!(decoder::decodebytes, m)?)?;
     Ok(())
 }

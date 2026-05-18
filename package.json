@@ -1,0 +1,11 @@
+{
+  "name": "base64-utils",
+  "description": "Running wasm tests",
+  "private": true,
+  "scripts": {
+    "test": "node tests/emscripten_runner.js"
+  },
+  "dependencies": {
+    "pyodide": "^0.29.0"
+  }
+}

@@ -14,6 +14,9 @@ theme:
         icon: lucide/moon
         name: Switch to light mode
 
+  icon:
+    repo: simple/github
+
 repo_name: aminalaee/base64-utils
 repo_url: https://github.com/aminalaee/base64-utils
 edit_uri: ""

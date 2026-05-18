@@ -33,10 +33,8 @@ Documentation = "https://github.com/aminalaee/base64_utils"
 Issues = "https://github.com/aminalaee/base64_utils/issues"
 Source = "https://github.com/aminalaee/base64_utils"
 
-[tool.mypy]
-disallow_untyped_defs = true
-ignore_missing_imports = true
-no_implicit_optional = true
+[tool.ty.rules]
+unresolved-import = "ignore"
 
 [tool.ruff.lint]
 select = [

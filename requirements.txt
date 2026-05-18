@@ -1,5 +1,5 @@
 zensical~=0.0.42
-mypy==1.19.1
+ty==0.0.36
 pytest==9.0.1
 pytest-codspeed==4.5.0
 ruff==0.15.12

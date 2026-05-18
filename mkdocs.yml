@@ -3,11 +3,16 @@ site_description: Python base64 powered by Rust
 site_url: https://aminalaee.github.io/base64-utils
 
 theme:
-  name: "material"
+  name: "zensical"
   palette:
-    primary: white
-  features:
-    - content.code.copy
+    - scheme: default
+      toggle:
+        icon: lucide/sun
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: lucide/moon
+        name: Switch to light mode
 
 repo_name: aminalaee/base64-utils
 repo_url: https://github.com/aminalaee/base64-utils

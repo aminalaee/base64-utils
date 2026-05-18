@@ -40,7 +40,7 @@ b'data to be encoded'
 
 ## Benchmarks
 
-![Benchmarks](docs/benchmarks.svg)
+![Benchmarks](benchmarks.svg)
 
 ```
 ╭──────────────────────────────────────── benchdiff ────────────────────────────────────────╮

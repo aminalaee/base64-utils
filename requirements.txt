@@ -1,6 +1,6 @@
-zensical~=0.0.57
-ty==0.0.75
-pytest==9.1.1
+zensical~=0.0.67
+ty==0.0.94
+pytest==9.2.0
 pytest-codspeed==5.0.3
-ruff==0.16.5
+ruff==0.17.3
 benchdiff==0.3.0
